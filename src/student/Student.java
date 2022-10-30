@@ -1,7 +1,7 @@
 package student;
 
 public class Student {
-   private String name;
+    private String name;
  private int id;
  private String lastName;
 
@@ -9,16 +9,22 @@ public class Student {
         this.name = name;
         this.id = id;
         this.lastName = lastName;
+
     }
 
-    public Student() {
 
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", id=" + id +
+                ", lastName='" + lastName + '\'' +
+                '}';
     }
 
     public String getName() {
-        System.out.println("user can access the value");
         return name;
-
     }
 
     public void setName(String name) {
@@ -26,7 +32,6 @@ public class Student {
     }
 
     public int getId() {
-        System.out.println("Id is private");
         return id;
     }
 
@@ -40,5 +45,13 @@ public class Student {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+
+
     }
+
+
+
 }
+
+
+
