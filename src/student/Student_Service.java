@@ -6,11 +6,15 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Student_Service {
+    Student_Service[]Array=new Student_Service[5];
     //// put list of student in array list. from student class.
     ArrayList<Student> stuList = new ArrayList<Student>();
     Student stu1 = new Student("Gopal", 101, "Basnet");
     Student stu2 = new Student("Biplav", 202, "Gautam");
     Student stu3 = new Student("Min", 303, "Budhathoki");
+    Student stu4=new Student("abc",1234,"dfjij");
+
+
 
 
     //
@@ -26,8 +30,11 @@ public class Student_Service {
         stuList.add(stu1);
         stuList.add(stu2);
         stuList.add(stu3);
-       //stuList.add(stu4);
+       stuList.add(stu4);
 
+    }
+
+    public Student_Service(String name, int id, String lastName) {
     }
 
     //  create method for view all student
@@ -56,7 +63,7 @@ public class Student_Service {
         }
     }
 
-    public void getLogIn() {
+    public boolean getLogIn() {
 
         System.out.println("Please enter your user name: ");
         //user "admin"
@@ -83,10 +90,11 @@ public class Student_Service {
 
         if (("admin".equals(user) && "1234".equals(password))) {
             System.out.println("Login successfully");
+            return true;
         }
         else {
             System.out.println("incorrect user name and password ! Please Try Again ");
-            System.exit(1);}
+            return false;}
         }
 
         // Clearing the password so that it doesn't get stored in memory
@@ -138,16 +146,21 @@ public class Student_Service {
         }
     }
 public void addStudent(){
+
     System.out.println("Please Enter name");
     name=sc.nextLine();
     System.out.println("Enter Id");
     id=sc.nextInt();
     System.out.println("Enter last name");
-    lastName=sc.nextLine();
-    Student student=new Student(name,id,lastName);
-    stuList.add(student);
-    System.out.println("Student added successfully");
-    System.out.println(student);
+    lastName=sc.next();
+   Student_Service student=new Student_Service(name,id,lastName);
+    //stuList.add(student);
+    for(int i=0;i<5;i++){
+        Array [i]= new Student_Service(name,id,lastName);
+    }
+
+  //  System.out.println("Student added successfully");
+    //System.out.println(student);
 
     }
     public void getPayCheckDetails() {
@@ -173,6 +186,28 @@ public void addStudent(){
 
 
     }
+    public void userLogIn() {
+        //define found with boolean
+        boolean found = false;
+        System.out.println("Enter your Id");
+        id = sc.nextInt();
+        System.out.println("Enter your Name");
+        name=sc.nextLine();
+        for (Student student : stuList) {
+            if ((student.getId() == id) &&(student.getName()==name));  {
+                System.out.println(student);
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("User not found ");
+            System.exit(2);
+        }
+    }
+
+
+
+
 }
 
 

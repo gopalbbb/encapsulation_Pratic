@@ -4,6 +4,9 @@ public class Student {
     private String name;
  private int id;
  private String lastName;
+ private String userName;
+ private String passWord;
+
 
     public Student(String name, int id, String lastName) {
         this.name = name;
